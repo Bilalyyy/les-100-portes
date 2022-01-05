@@ -1,0 +1,33 @@
+import UIKit
+
+var doors : [Bool] = []
+var passNbr = 1
+
+for _ in 0...99 {
+    doors.append(false)
+}
+print("toute les portes sont fermé")
+
+for index in 0...99 {
+    doors[index].toggle()
+    let state = doors[index] ? "ouvre" : "ferme"
+    print("passage num: \(passNbr), je \(state) la porte n°: \(index + 1)")
+}
+
+passNbr += 1
+
+while passNbr < 101 {
+    for index in stride(from: passNbr, through: 100, by: passNbr) {
+        doors[index - 1].toggle()
+        
+        let state = doors[index - 1] ? "ouvre" : "ferme"
+        print("passage num: \(passNbr), je \(state) la porte n°: \(index)")
+    }
+    passNbr += 1
+}
+
+var numDoor = Int()
+doors.forEach { state in
+    numDoor += 1
+    print(state ? "La porte \(numDoor) est ouverte" : "La porte \(numDoor) est fermé")
+}
